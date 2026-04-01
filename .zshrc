@@ -120,11 +120,11 @@ alias gtdf="cd ~/Documents/ds-projects/"
 
 # make new Data science project
 ndsp() {
-/Users/sambea/Documents/ds-projects/dsproject.sh "$@"
+$HOME/Documents/ds-projects/dsproject.sh "$@"
 }
 
 # bun completions
-[ -s "/Users/sambea/.bun/_bun" ] && source "/Users/sambea/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -133,11 +133,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Python
 alias python="python3"
 
-# Anthropic ai
-# API keys sourced from ~/.secrets
-export AVANTE_ANTHROPIC_API_KEY=REDACTED
+# secrets
+# Import api keys to zshrc
+[ -f $HOME/.secrets ] && source $HOME/.secrets
 
-test -e /Users/sambea/.iterm2_shell_integration.zsh && source /Users/sambea/.iterm2_shell_integration.zsh || true
+test -e $HOME/.iterm2_shell_integration.zsh && source $HOME/.iterm2_shell_integration.zsh || true
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -157,7 +157,7 @@ bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/sambea/.docker/completions $fpath)
+fpath=($HOME/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
