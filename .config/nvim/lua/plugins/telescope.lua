@@ -24,6 +24,10 @@ return {
 
     telescope.setup({
       defaults = {
+        file_ignore_patterns = {
+          ".git/",
+          "node_modules/",
+        },
         path_display = { "smart" },
         mappings = {
           i = {
@@ -40,6 +44,9 @@ return {
         },
         -- You can also configure other pickers like live_grep if needed
         live_grep = {
+          hidden = true,
+        },
+        grep_string = {
           hidden = true,
         },
       },
