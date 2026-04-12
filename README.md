@@ -1,5 +1,6 @@
 #  Custom Dev Environment
 
+![Sambea Branding](sambea-branding.png)
 Cool-looking terminal (Ghostty), keyboard-based window management with sessions.
 
 # Tools List

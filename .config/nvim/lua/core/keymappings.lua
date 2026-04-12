@@ -80,9 +80,9 @@ wk.add({
 })
 keymap.set("n", "<leader>go", "<cmd>LazyGit<CR>", { desc = "Open LazyGit" })
 
--- Substitute
+-- Substitute / Run
 wk.add({
-  { "<leader>r", group = "Substitute" },
+  { "<leader>r", group = "Substitute / Run" },
 })
 keymap.set("n", "<leader>r", require("substitute").operator, { desc = "Substitute with motion" })
 keymap.set("n", "<leader>rr", require("substitute").line, { desc = "Substitute line" })

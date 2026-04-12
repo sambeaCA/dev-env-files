@@ -8,7 +8,7 @@ const ExampleComponent = (props: ExampleComponentProps) => {
 		<div>
 			<h1>{props.title}</h1>
 			{props.blocks.map((block, idx) => (
-				<li key={`${idx.toString()}`}>{block}</li>
+				<li key={`${idx.toString()}`}>{block ?? "Hello"}</li>
 			))}
 		</div>
 	);

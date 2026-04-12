@@ -5,6 +5,7 @@ Configuration for [Ghostty](https://ghostty.org/), a fast GPU-accelerated termin
 ---
 
 ### Setup
+custom theme documentation: [Ghostty Custom theme documentation](https://ghostty.org/docs/features/theme#authoring-a-custom-theme)
 
 - **Theme:** Dracula
 - Config is split into two files:

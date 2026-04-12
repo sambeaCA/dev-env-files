@@ -46,6 +46,9 @@ return {
     -- Fix on save
     vim.g.ale_fix_on_save = 1
 
+    -- Python fixer
+    vim.g.ale_python_pylint_options = "--max-line-length=100"
+    vim.g.ale_python_flake8_options = "--max-line-length=100"
     -- Lint timing
     vim.g.ale_lint_on_text_changed = "normal"
     vim.g.ale_lint_on_insert_leave = 1

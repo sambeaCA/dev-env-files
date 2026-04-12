@@ -82,6 +82,9 @@ keybindings:
       name: lazygit
       command: >
         cd {{.RepoPath}}; lazygit
+  prs:
+    - key: T
+      command: gh enhance -R {{.RepoName}} {{.PrNumber}}
 repoPaths: {}
 theme:
   colors:

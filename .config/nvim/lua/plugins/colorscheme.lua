@@ -1,7 +1,8 @@
 return {
-  "folke/tokyonight.nvim",
+  name = "sambea-colorscheme",
+  dir = vim.fn.stdpath("config"),
   priority = 1000,
   config = function()
-    vim.cmd("colorscheme tokyonight")
-  end
+    vim.cmd("colorscheme sambea")
+  end,
 }

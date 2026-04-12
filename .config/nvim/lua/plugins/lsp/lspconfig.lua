@@ -2,6 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
+    "saghen/blink.cmp",
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
@@ -71,7 +72,9 @@ return {
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    --
+    -- local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     vim.diagnostic.config({
@@ -91,6 +94,29 @@ return {
         function(server_name)
           lspconfig[server_name].setup({
             capabilities = capabilities,
+          })
+        end,
+        ["ts_ls"] = function()
+          lspconfig["ts_ls"].setup({
+            capabilities = capabilities,
+            settings = {
+              typescript = {
+                suggest = {
+                  completeFunctionCalls = true,
+                },
+                -- This enables auto-imports for suggested completions
+                preferences = {
+                  includeCompletionsForModuleExports = true,
+                  importModuleSpecifierPreference = "non-relative", -- or "relative"
+                },
+              },
+              javascript = {
+                preferences = {
+                  includeCompletionsForModuleExports = true,
+                  importModuleSpecifierPreference = "non-relative",
+                },
+              },
+            },
           })
         end,
         ["svelte"] = function()

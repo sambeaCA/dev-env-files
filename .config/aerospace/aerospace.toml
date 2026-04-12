@@ -3,6 +3,7 @@
 # After that, you can edit ~/.aerospace.toml to your liking
 
 # Config version for compatibility and deprecations
+
 # Fallback value (if you omit the key): config-version = 1
 config-version = 2
 
@@ -28,7 +29,7 @@ default-root-container-layout = 'tiles'
 # Possible values: horizontal|vertical|auto
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
 #               tall monitor (anything higher than wide) gets vertical orientation
-default-root-container-orientation = 'auto'
+default-root-container-orientation = 'vertical'
 
 # Mouse follows focus when focused monitor changes
 # Drop it from your config, if you don't like this behavior
@@ -75,7 +76,7 @@ on-mode-changed = []
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
     outer.top = [
-    { monitor."Built-in" = 4 },
+    { monitor."Built-in" = 46 },
     { monitor."LG HDR WFHD" = 46 },
     46
     ]
@@ -155,6 +156,7 @@ on-mode-changed = []
     alt-n = 'workspace N' # Notes - Obsidian
     alt-s = 'workspace S' # Social Media Hub
     alt-t = 'workspace T' # Terminal
+    alt-v = 'workspace V' # Video Editing
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
@@ -172,6 +174,7 @@ on-mode-changed = []
     alt-shift-n = 'move-node-to-workspace N --focus-follows-window'
     alt-shift-s = 'move-node-to-workspace S --focus-follows-window'
     alt-shift-t = 'move-node-to-workspace T --focus-follows-window'
+    alt-shift-v = 'move-node-to-workspace V --focus-follows-window'
 
     alt-shift-f = 'fullscreen'
 
@@ -216,4 +219,11 @@ on-mode-changed = []
     if.app-id = 'ai.perplexity.comet'
     run = "move-node-to-workspace B"
 
+[[on-window-detected]]
+    if.app-id = 'com.obsproject.obs-studio'
+    run = "move-node-to-workspace O"
 
+[[on-window-detected]]
+    if.app-id = 'com.blackmagic-design.DaVinciResolve'
+    run = "move-node-to-workspace V"
+    

@@ -4,11 +4,14 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="sambea"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -63,7 +66,7 @@ ZSH_THEME="robbyrussell"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=$HOME/.config/oh-my-zsh
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -107,9 +110,28 @@ alias vi="nvim"
 alias vim="nvim"
 alias ls="eza --color=always --long --no-filesize --icons=always  --no-time --no-user --no-permissions"
 alias cd="z"
+alias reload-zsh="source ~/.zshrc"
+
 # alias tmux="tmux -f ~/.config/tmux/tmux.conf"
 #
+## ---- FZF -----
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
+
+# --- setup fzf theme ---
+fg="#F6F6F6"
+bg="#1A1516"
+light_green="#A8F176"
+hunter_green="#3A6A4F"
+dust_gray="#D7D3CC"
+bright_snow="#F6F6F6"
+shadow_grey="#221D1E"
+
+export FZF_DEFAULT_OPTS="--color=fg:${bright_snow},bg:${bg},hl:${hunter_green},fg+:${shadow_grey},bg+:${light_green},hl+:${hunter_green},info:${dust_gray},prompt:${light_green},pointer:${light_green},marker:${light_green},spinner:${light_green},header:${light_green}"
+
 # Zoxide
+#
 eval "$(zoxide init zsh)"
 
 # Go to folder alias
@@ -166,3 +188,4 @@ export PATH="$HOME/.local/bin:$PATH"
 # Ghostty
 export PATH="$PATH:/Applications/Ghostty.app/Contents/MacOS"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+eval "$(uv generate-shell-completion zsh)"
