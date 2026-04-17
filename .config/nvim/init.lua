@@ -5,6 +5,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
+-- Ensure termguicolors is enabled if not already
+vim.opt.termguicolors = true
 -- Lazy.nvim package manager
 require("config.lazy")
 

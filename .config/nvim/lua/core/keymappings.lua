@@ -76,7 +76,7 @@ wk.add({
 
 -- Claude Code
 wk.add({
-  { "<leader>a", group = "AI/Claude Code" },
+  { "<leader>a", group = "AI/Open Code" },
 })
 keymap.set("n", "<leader>go", "<cmd>LazyGit<CR>", { desc = "Open LazyGit" })
 

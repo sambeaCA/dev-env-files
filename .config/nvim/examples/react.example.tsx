@@ -13,5 +13,3 @@ const ExampleComponent = (props: ExampleComponentProps) => {
 		</div>
 	);
 };
-
-export default ExampleComponent;
