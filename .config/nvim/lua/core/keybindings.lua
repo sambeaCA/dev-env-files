@@ -38,6 +38,7 @@ keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Move to right pane from 
 
 -- Remap enter to make a new line below curson (macOS) in normal mode
 api.nvim_set_keymap("n", "<CR>", "o<ESC>", { noremap = true, silent = true })
+
 -- Shift+Enter: open new line below and enter insert mode (VSCode-style)
 api.nvim_set_keymap("n", "<S-CR>", "o", { noremap = true, silent = true })
 api.nvim_set_keymap("i", "<S-CR>", "<Esc>o", { noremap = true, silent = true })
@@ -58,23 +59,20 @@ keymap.set("n", "<C-j>", "<C-w>j", { desc = "Focus pane below" })
 keymap.set("n", "<C-k>", "<C-w>k", { desc = "Focus pane above" })
 keymap.set("n", "<C-l>", "<C-w>l", { desc = "Focus right pane" })
 
--- File tree shorthand (mirrors <leader>e in VSCode)
-keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", { desc = "Reveal file in explorer", silent = true })
-keymap.set("n", "<D-b>", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer (GUI Neovim / Cmd+B)", silent = true })
-
 -- Move lines (mirrors Alt+j/k in VSCode)
-keymap.set("n", "<M-j>", ":m .+1<CR>==", { desc = "Move line down", silent = true })
-keymap.set("n", "<M-k>", ":m .-2<CR>==", { desc = "Move line up", silent = true })
-keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true })
-keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
+keymap.set("n", "<leader>mj", ":m .+1<CR>==", { desc = "Move line down", silent = true })
+keymap.set("n", "<leader>mk", ":m .-2<CR>==", { desc = "Move line up", silent = true })
+keymap.set("v", "<leader>mj", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true })
+keymap.set("v", "<leader>mk", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
 
 -- Duplicate lines (mirrors Shift+Alt+j/k in VSCode)
-keymap.set("n", "<S-M-j>", "yyp", { desc = "Duplicate line down" })
-keymap.set("n", "<S-M-k>", "yyP", { desc = "Duplicate line up" })
-
+keymap.set("n", "<leader>dj", "yyp", { desc = "Duplicate line down" })
+keymap.set("n", "<leader>dk", "yyP", { desc = "Duplicate line up" })
+-- Duplicate selection down
+keymap.set("v", "<leader>dj", "yp", { desc = "Duplicate selection down" })
+-- Duplicate selection up
+keymap.set("v", "<leader>dk", "yP", { desc = "Duplicate selection up" })
+-- Note: Visual duplication is trickier; usually, people just use 'y' then 'p'.
 -- Visual indent stays in visual mode (mirrors < > in VSCode visual)
 keymap.set("v", "<", "<gv", { desc = "Outdent and stay in visual" })
 keymap.set("v", ">", ">gv", { desc = "Indent and stay in visual" })
-
--- Visual comment toggle (mirrors <leader>c in VSCode visual)
-keymap.set("v", "<leader>c", "gc", { desc = "Toggle comment", remap = true })
