@@ -35,7 +35,10 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = "default" },
+    keymap = {
+      preset = "default",
+      ["<C-k>"] = { "show", "show_signature", "hide_signature", "fallback" },
+    },
 
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -59,4 +62,15 @@ return {
     fuzzy = { implementation = "prefer_rust_with_warning" },
   },
   opts_extend = { "sources.default" },
+  config = function(_, opts)
+    require("blink.cmp").setup(opts)
+    local blink = require("blink.cmp")
+    vim.keymap.set({ "i", "s" }, "<C-k>", function()
+      if blink.is_visible() then
+        blink.show_signature()
+      else
+        blink.show()
+      end
+    end, { desc = "Blink: show menu / signature" })
+  end,
 }
