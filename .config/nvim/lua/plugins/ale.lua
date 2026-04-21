@@ -8,47 +8,24 @@ return {
     -- Only run explicitly configured linters
     vim.g.ale_linters_explicit = 1
 
-    -- Linters: Biome LSP handles JS/TS diagnostics, ALE only lints Python
+    -- Linters: Biome LSP owns JS/TS/CSS/JSON/TOML diagnostics; ALE only lints Python
     vim.g.ale_linters = {
-      javascript = { "biome" },
-      typescript = { "biome" },
-      javascriptreact = { "biome" },
-      typescriptreact = { "biome" },
-      svelte = {},
       python = { "pylint" },
-      css = { "biome" },
-      lua = {},
-      toml = { "biome" },
-      json = { "biome" },
     }
 
-    -- Map JSX/TSX filetypes to JS/TS for fixer resolution
-    vim.g.ale_linter_aliases = {
-      javascriptreact = { "javascript" },
-      typescriptreact = { "typescript" },
-    }
-
-    -- Fixers
+    -- Fixers: biome LSP + stylua LSP handle their own filetypes via BufWritePre (see core/automation.lua)
     vim.g.ale_fixers = {
       ["*"] = { "remove_trailing_lines", "trim_whitespace" },
-      javascript = { "biome" },
-      typescript = { "biome" },
-      javascriptreact = { "biome" },
-      typescriptreact = { "biome" },
-      svelte = { "biome" },
       python = { "isort", "black" },
-      css = { "biome" },
-      lua = { "stylua" },
-      toml = { "biome" },
-      json = { "biome" },
     }
 
-    -- Fix on save
+    -- Fix on save (applies only to filetypes above — "*" globals + python)
     vim.g.ale_fix_on_save = 1
 
-    -- Python fixer
+    -- Python options
     vim.g.ale_python_pylint_options = "--max-line-length=100"
     vim.g.ale_python_flake8_options = "--max-line-length=100"
+
     -- Lint timing
     vim.g.ale_lint_on_text_changed = "normal"
     vim.g.ale_lint_on_insert_leave = 1
