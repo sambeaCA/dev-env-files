@@ -185,6 +185,8 @@ compinit
 # End of Docker CLI completions
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+# Treesitter-cli
+export PATH="$PATH:/opt/homebrew/opt/tree-sitter-cli"
 # Ghostty
 export PATH="$PATH:/Applications/Ghostty.app/Contents/MacOS"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
