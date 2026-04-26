@@ -23,6 +23,7 @@ return {
     vim.g.ale_fix_on_save = 1
 
     -- Python options
+    vim.g.ale_python_auto_virtualenv = 1
     vim.g.ale_python_pylint_options = "--max-line-length=100"
     vim.g.ale_python_flake8_options = "--max-line-length=100"
 

@@ -1,7 +1,19 @@
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
-  cmd = { "LspInfo", "LspLog", "LspRestart", "LspStart", "LspStop" },
+  -- Use 'ft' instead of 'event'. This is much more reliable.
+  -- The plugin will load the moment you open any of these file types.
+  ft = {
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "lua",
+    "css",
+    "html",
+    "json",
+    "tf",
+    "python",
+  },
   dependencies = {
     "saghen/blink.cmp",
     { "antosha417/nvim-lsp-file-operations", config = true },
@@ -16,6 +28,9 @@ return {
     },
   },
   config = function()
+    -- This registers :LspInfo and initializes the plugin
+    require("lspconfig")
+
     local keymap = vim.keymap
 
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -31,19 +46,23 @@ return {
         map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", "Show LSP implementations")
         map("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", "Show LSP type definitions")
         map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "See available code actions")
-        map("n", "<leader>rn", vim.lsp.buf.rename, "Smart rename")
+        map("n", "<leader>cn", vim.lsp.buf.rename, "Smart rename")
         map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics")
         map("n", "<leader>d", vim.diagnostic.open_float, "Show line diagnostics")
-        map("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, "Go to previous diagnostic")
-        map("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, "Go to next diagnostic")
-        map("n", "K", vim.lsp.buf.hover, "Show documentation for what is under cursor")
-        map("n", "gh", vim.lsp.buf.hover, "Show hover docs (VSCode: gh)")
-        map("n", "<leader>rs", function()
+        map("n", "[d", function()
+          vim.diagnostic.jump({ count = -1, float = true })
+        end, "Prev diagnostic")
+        map("n", "]d", function()
+          vim.diagnostic.jump({ count = 1, float = true })
+        end, "Next diagnostic")
+        map("n", "K", vim.lsp.buf.hover, "Hover docs")
+        map("n", "gh", vim.lsp.buf.hover, "Hover docs")
+        map("n", "<leader>wL", function()
           for _, c in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-            c:stop()
+            c.stop()
           end
           vim.cmd.edit()
-        end, "Restart LSP (buffer clients)")
+        end, "Restart LSP")
       end,
     })
 
@@ -63,7 +82,6 @@ return {
       float = { border = "rounded", source = "if_many" },
     })
 
-    -- Global capability defaults for all servers (merged at enable-time via lsp/*.lua).
     vim.lsp.config("*", {
       capabilities = require("blink.cmp").get_lsp_capabilities(),
     })

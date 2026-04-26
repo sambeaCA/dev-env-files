@@ -7,9 +7,9 @@ return {
   -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
 
   keys = {
-    { "<leader>rc", "<Plug>SnipRun", mode = { "n", "v" }, desc = "Run code (SnipRun)" },
-    { "<leader>ro", "<Plug>SnipRunOperator", mode = "n", desc = "Run with motion (SnipRun)" },
-    { "<leader>rx", "<cmd>SnipClose<CR><cmd>SnipReset<CR>", mode = "n", desc = "Close & reset SnipRun" },
+    { "<leader>rc", "<Plug>SnipRun",                        mode = { "n", "v" }, desc = "Run code (SnipRun)" },
+    { "<leader>ro", "<Plug>SnipRunOperator",                mode = "n",          desc = "Run with motion (SnipRun)" },
+    { "<leader>rx", "<cmd>SnipClose<CR><cmd>SnipReset<CR>", mode = "n",          desc = "Close & reset SnipRun" },
   },
 
   config = function()
@@ -24,7 +24,14 @@ return {
       display = {
         -- "Classic", --# display results in the command-line  area
         "VirtualTextOk", --# display ok results as virtual text (multiline is shortened)
-        "Terminal", --# display results in a vertical split
+        "NvimNotify",    --# display results in a vertical split
+      },
+
+      display_options = {
+        terminal_scrollback = vim.o.scrollback, -- change terminal display scrollback lines
+        terminal_line_number = false,           -- whether show line number in terminal window
+        terminal_signcolumn = false,            -- whether show signcolumn in terminal window
+        terminal_width = 140,                   -- change the terminal display option width
       },
     })
   end,

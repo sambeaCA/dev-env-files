@@ -80,14 +80,14 @@ wk.add({
 })
 keymap.set("n", "<leader>go", "<cmd>LazyGit<CR>", { desc = "Open LazyGit" })
 
--- Substitute / Run
+-- Sniprun reserves <leader>r — substitute lives under <leader>u
 wk.add({
-  { "<leader>r", group = "Substitute / Run" },
+  { "<leader>u", group = "Substitute" },
 })
-keymap.set("n", "<leader>r", require("substitute").operator, { desc = "Substitute with motion" })
-keymap.set("n", "<leader>rr", require("substitute").line, { desc = "Substitute line" })
-keymap.set("n", "<leader>R", require("substitute").eol, { desc = "Substitute to end of line" })
-keymap.set("x", "<leader>r", require("substitute").visual, { desc = "Substitute in visual mode" })
+keymap.set("n", "<leader>u", require("substitute").operator, { desc = "Substitute with motion" })
+keymap.set("n", "<leader>uu", require("substitute").line, { desc = "Substitute line" })
+keymap.set("n", "<leader>U", require("substitute").eol, { desc = "Substitute to end of line" })
+keymap.set("x", "<leader>u", require("substitute").visual, { desc = "Substitute in visual mode" })
 
 -- Todo Comments
 wk.add({

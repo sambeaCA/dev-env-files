@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
+  branch = "master",
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -17,7 +17,7 @@ return {
 
     -- or create your custom action
     local custom_actions = transform_mod({
-      open_trouble_qflist = function(prompt_bufnr)
+      open_trouble_qflist = function()
         trouble.toggle("quickfix")
       end,
     })
@@ -29,6 +29,16 @@ return {
           "node_modules/",
         },
         path_display = { "smart" },
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+        },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result

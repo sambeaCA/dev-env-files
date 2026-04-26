@@ -191,3 +191,6 @@ export PATH="$PATH:/opt/homebrew/opt/tree-sitter-cli"
 export PATH="$PATH:/Applications/Ghostty.app/Contents/MacOS"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(uv generate-shell-completion zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
