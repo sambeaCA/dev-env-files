@@ -26,21 +26,21 @@ return {
           },
         },
       },
-      -- disable window_picker for
-      -- explorer to work well with
-      -- window splits
-      actions = {
-        open_file = {
-          window_picker = {
-            enable = false,
-          },
-        },
-      },
       filters = {
         custom = { ".DS_Store" },
       },
       git = {
         ignore = false,
+      },
+      update_focused_file = {
+        enable = true,
+        update_root = false,
+      },
+      actions = {
+        open_file = {
+          window_picker = { enable = false },
+          quit_on_open = true,
+        },
       },
     })
 

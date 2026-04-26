@@ -21,6 +21,12 @@ return {
       "pyright",
       "biome",
       "terraformls",
+      "svelte",
+      "jsonls",
+      "yamlls",
+      "taplo",
+      "rust_analyzer",
+      "gopls",
     }
     -- enable mason and configure icons
     mason.setup({
@@ -58,12 +64,14 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "biome",  -- biome linter/formatter
+        "biome", -- biome linter/formatter
         "stylua", -- lua formatter
-        "isort",  -- python import sorter
-        "black",  -- python formatter
+        "isort", -- python import sorter
+        "black", -- python formatter
         "pylint", -- python linter
         "tflint", -- Terraform linter
+        "gofumpt", -- stricter go formatter
+        "goimports", -- go import organizer
       },
     })
   end,

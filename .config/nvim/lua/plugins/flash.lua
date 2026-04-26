@@ -4,7 +4,8 @@ return {
   ---@type Flash.Config
   opts = {},
   keys = {
-    -- Use gs/gS instead of s/S to avoid conflict with substitute.nvim
+    -- gs/gS instead of s/S: substitute.nvim owns s-prefixed motions when remapped (see <leader>u group)
+    -- r/R in operator/visual modes: r is "replace char" only in normal mode, free in op-pending
     { "gs", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
     { "gS", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },

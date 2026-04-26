@@ -41,7 +41,9 @@ return {
     -- Virtual text
     vim.g.ale_virtualtext_cursor = "current"
 
-    -- Keymaps
-    vim.keymap.set("n", "<leader>l", "<cmd>ALELint<CR>", { desc = "Trigger linting (ALE)" })
+    -- Keymaps (group <leader>l = Lint registered in core/keymappings.lua)
+    vim.keymap.set("n", "<leader>la", "<cmd>ALELint<CR>", { desc = "Trigger ALE lint" })
+    vim.keymap.set("n", "<leader>lf", "<cmd>ALEFix<CR>", { desc = "Trigger ALE fix" })
+    vim.keymap.set("n", "<leader>li", "<cmd>ALEInfo<CR>", { desc = "ALE info" })
   end,
 }

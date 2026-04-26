@@ -11,11 +11,23 @@ return {
     "css",
     "html",
     "json",
-    "tf",
+    "jsonc",
+    "yaml",
+    "toml",
+    "terraform",
+    "terraform-vars",
+    "hcl",
     "python",
+    "rust",
+    "go",
+    "gomod",
+    "gowork",
+    "gosum",
+    "gotmpl",
   },
   dependencies = {
     "saghen/blink.cmp",
+    "b0o/SchemaStore.nvim",
     { "antosha417/nvim-lsp-file-operations", config = true },
     {
       "folke/lazydev.nvim",
@@ -56,7 +68,12 @@ return {
           vim.diagnostic.jump({ count = 1, float = true })
         end, "Next diagnostic")
         map("n", "K", vim.lsp.buf.hover, "Hover docs")
-        map("n", "gh", vim.lsp.buf.hover, "Hover docs")
+
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client and client.server_capabilities.inlayHintProvider then
+          vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+        end
+
         map("n", "<leader>wL", function()
           for _, c in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
             c.stop()

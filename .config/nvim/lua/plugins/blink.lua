@@ -62,15 +62,4 @@ return {
     fuzzy = { implementation = "prefer_rust_with_warning" },
   },
   opts_extend = { "sources.default" },
-  config = function(_, opts)
-    require("blink.cmp").setup(opts)
-    local blink = require("blink.cmp")
-    vim.keymap.set({ "i", "s" }, "<C-k>", function()
-      if blink.is_visible() then
-        blink.show_signature()
-      else
-        blink.show()
-      end
-    end, { desc = "Blink: show menu / signature" })
-  end,
 }

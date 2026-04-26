@@ -2,6 +2,14 @@ return {
   'lewis6991/gitsigns.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
   opts = {
+    current_line_blame = true,
+    current_line_blame_opts = {
+      virt_text = true,
+      virt_text_pos = "eol",
+      delay = 300,
+      ignore_whitespace = false,
+    },
+    current_line_blame_formatter = "<author>, <author_time:%R> · <summary>",
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
 
@@ -10,8 +18,8 @@ return {
       end
 
       -- Navigation
-      map('n', ']h', gs.next_hunk, 'Next Hunk')
-      map('n', '[h', gs.prev_hunk, 'Prev Hunk')
+      map("n", "]h", gs.next_hunk, "Next hunk")
+      map("n", "[h", gs.prev_hunk, "Prev hunk")
 
       -- Actions
       map('n', '<leader>hs', gs.stage_hunk, 'Stage hunk')
