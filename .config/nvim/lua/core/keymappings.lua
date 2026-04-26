@@ -43,7 +43,9 @@ keymap.set("n", "<leader>Fq", "<cmd>q!<CR>", { desc = "Force quit" })
 keymap.set("n", "<leader>Fx", "<cmd>x<CR>", { desc = "Write and quit" })
 keymap.set("n", "<leader>Fn", function()
   vim.ui.input({ prompt = "New file: ", completion = "file" }, function(name)
-    if not name or name == "" then return end
+    if not name or name == "" then
+      return
+    end
     local path = vim.fn.fnamemodify(name, ":p")
     vim.fn.mkdir(vim.fn.fnamemodify(path, ":h"), "p")
     vim.cmd.edit(path)
@@ -78,8 +80,12 @@ keymap.set("n", "<leader>U", require("substitute").eol, { desc = "Substitute to 
 keymap.set("x", "<leader>u", require("substitute").visual, { desc = "Substitute in visual mode" })
 
 -- Todo navigation
-keymap.set("n", "]t", function() todo_comments.jump_next() end, { desc = "Next todo comment" })
-keymap.set("n", "[t", function() todo_comments.jump_prev() end, { desc = "Previous todo comment" })
+keymap.set("n", "]t", function()
+  todo_comments.jump_next()
+end, { desc = "Next todo comment" })
+keymap.set("n", "[t", function()
+  todo_comments.jump_prev()
+end, { desc = "Previous todo comment" })
 keymap.set("n", "<leader>nt", "<cmd>TodoTelescope<CR>", { desc = "Find todos" })
 
 -- VSCode-style comment toggle
