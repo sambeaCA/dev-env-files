@@ -27,6 +27,7 @@ return {
       "taplo",
       "rust_analyzer",
       "gopls",
+      "marksman",
     }
     -- enable mason and configure icons
     mason.setup({

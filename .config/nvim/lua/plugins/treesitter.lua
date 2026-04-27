@@ -15,6 +15,7 @@ return {
         "css",
         "markdown",
         "markdown_inline",
+        "latex",
         "svelte",
         "graphql",
         "bash",

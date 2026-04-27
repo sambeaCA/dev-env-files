@@ -18,6 +18,8 @@ return {
     "terraform-vars",
     "hcl",
     "python",
+    "markdown",
+    "markdown.mdx",
     "rust",
     "go",
     "gomod",

@@ -22,3 +22,7 @@ T44his is the content below heading 04
 - Testing
   - This is why
   - [ ] a question
+
+
+
+  $\sqrt{2x-1}+(1+x)^2$
