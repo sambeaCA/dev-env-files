@@ -2,10 +2,10 @@ return {
   "akinsho/toggleterm.nvim",
   version = "*",
   keys = {
-    { [[<C-\>]], mode = { "n", "t" }, desc = "Toggle terminal" },
+    { [[<M-\>]], mode = { "n", "t" }, desc = "Toggle terminal" },
   },
   opts = {
-    open_mapping = [[<C-\>]],
+    open_mapping = [[<M-\>]],
     direction = "float",
     start_in_insert = true,
     insert_mappings = false,

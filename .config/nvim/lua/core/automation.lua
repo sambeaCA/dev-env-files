@@ -41,3 +41,16 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     vim.lsp.buf.format({ bufnr = args.buf, timeout_ms = 2000 })
   end,
 })
+
+-- Soft-wrap prose at 120 cols for markdown buffers.
+-- Display-only: no hard line breaks inserted into the file.
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'markdown.mdx' },
+  group = vim.api.nvim_create_augroup('user-markdown-prose', { clear = true }),
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.breakindent = true
+    vim.opt_local.textwidth = 120
+  end,
+})

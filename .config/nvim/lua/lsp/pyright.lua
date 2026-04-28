@@ -4,9 +4,10 @@ return {
       analysis = {
         typeCheckingMode = "basic",
         autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
+        useLibraryCodeForTypes = false,
         diagnosticMode = "openFilesOnly",
         autoImportCompletions = true,
+        indexing = false,
       },
     },
   },
