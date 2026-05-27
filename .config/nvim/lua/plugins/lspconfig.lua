@@ -69,7 +69,7 @@ return {
         map("n", "]d", function()
           vim.diagnostic.jump({ count = 1, float = true })
         end, "Next diagnostic")
-        map("n", "K", vim.lsp.buf.hover, "Hover docs")
+        -- K is handled by nvim-ufo (peek fold → hover fallback)
 
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         if client and client.server_capabilities.inlayHintProvider then
@@ -101,8 +101,11 @@ return {
       float = { border = "rounded", source = "if_many" },
     })
 
-    vim.lsp.config("*", {
-      capabilities = require("blink.cmp").get_lsp_capabilities(),
-    })
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    }
+    vim.lsp.config("*", { capabilities = capabilities })
   end,
 }

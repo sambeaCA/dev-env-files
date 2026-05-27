@@ -6,7 +6,7 @@ return {
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
   opts = {
-    file_types = { "markdown", "Avante" },
+    file_types = { "markdown", "Avante", "python" },
     completions = {
       lsp = { enabled = true },
     },
@@ -22,6 +22,7 @@ return {
       right_pad = 2,
     },
     code = {
+      language_icon = true, -- Icons for 'python'
       style = "full",
       position = "left",
       width = "block",
@@ -44,5 +45,5 @@ return {
     },
     anti_conceal = { enabled = true },
   },
-  ft = { "markdown", "Avante" },
+  ft = { "markdown", "Avante", "python" },
 }

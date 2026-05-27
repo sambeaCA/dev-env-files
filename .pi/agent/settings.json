@@ -1,0 +1,91 @@
+{
+  "lastChangelogVersion": "0.75.5",
+  "packages": [
+    "npm:context-mode",
+    "npm:pi-lens",
+    "npm:pi-subagents",
+    "npm:@haispeed/pi-obsidian",
+    "npm:graphify-pi",
+    "npm:pi-mcp-adapter"
+  ],
+  "defaultProvider": "deepseek",
+  "defaultModel": "deepseek-v4-flash",
+  "defaultThinkingLevel": "high",
+  "theme": "tokyo-night",
+  "subagents": {
+    "agentOverrides": {
+      "scout": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "medium"
+      },
+      "planner": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "high"
+      },
+      "worker": {
+        "model": "deepseek/deepseek-v4-pro",
+        "thinking": "high"
+      },
+      "reviewer": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "high"
+      },
+      "context-builder": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "medium"
+      },
+      "researcher": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "medium"
+      },
+      "oracle": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "high"
+      },
+      "delegate": {
+        "model": "deepseek/deepseek-v4-pro",
+        "thinking": "medium"
+      },
+      "coding-team.bowser": {
+        "model": "deepseek/deepseek-v4-pro",
+        "thinking": "medium"
+      },
+      "coding-team.builder": {
+        "model": "deepseek/deepseek-v4-pro",
+        "thinking": "high"
+      },
+      "coding-team.documenter": {
+        "model": "deepseek/deepseek-v4-pro",
+        "thinking": "medium"
+      },
+      "coding-team.plan-reviewer": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "high"
+      },
+      "coding-team.planner": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "high"
+      },
+      "coding-team.red-team": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "high"
+      },
+      "coding-team.researcher": {
+        "model": "moonshotai/kimi-k2.6",
+        "thinking": "medium"
+      },
+      "coding-team.reviewer": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "high"
+      },
+      "coding-team.scout": {
+        "model": "@cf/moonshotai/kimi-k2.6",
+        "thinking": "medium"
+      },
+      "coding-team.ui-ux-designer": {
+        "model": "moonshotai/kimi-k2.6",
+        "thinking": "high"
+      }
+    }
+  }
+}
