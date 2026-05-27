@@ -78,7 +78,18 @@ xcode-select --install
 
 #### File Explorer
 
-- [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+- [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) — sidebar file tree with:
+  - Sidebar stays open when opening a file (`quit_on_open = false`)
+  - Sidebar width: 30 columns
+  - Custom folder arrow icons: `` (closed), `` (open)
+  - Hides `.DS_Store` files
+  - Git status tracking (includes ignored files via `git.ignore = false`)
+  - Focused file tracking (updates tree to highlight current file)
+  - Keymaps:
+    - `<leader>ee` — Toggle file explorer
+    - `<leader>ef` — Reveal current file in explorer
+    - `<leader>ec` — Collapse explorer tree
+    - `<leader>er` — Refresh explorer
 
 #### VS Code Like Icons
 
@@ -113,16 +124,17 @@ xcode-select --install
 
 #### Autocompletion
 
-- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - Completion plugin
-- [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - Completion source for text in current buffer
-- [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - Completion source for file system paths
-- [onsails/lspkind.nvim](https://github.com/onsails/lspkind.nvim) - Vs Code Like Icons for autocompletion
+> **Note:** Autocompletion has been migrated from `nvim-cmp` to `blink.cmp` (`saghen/blink.cmp`).
+> The plugins listed below are the current ones in use.
+
+- [saghen/blink.cmp](https://github.com/Saghen/blink.cmp) — Completion engine (replaces `nvim-cmp`)
+- [onsails/lspkind.nvim](https://github.com/onsails/lspkind.nvim) — Vs Code Like Icons for autocompletion
 
 #### Snippets
 
 - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet engine
 - [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - Useful snippets for different languages
-- [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - Completion source for snippet autocomplete
+- [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) — Snippet autocomplete source (Note: `blink.cmp` handles sources natively; verify if still needed)
 
 #### Managing & Installing Language Servers, Linters & Formatters
 
@@ -132,7 +144,7 @@ xcode-select --install
 
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Bridges gap b/w mason & lspconfig
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Easy way to configure lsp servers
-- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - Smart code autocompletion with lsp
+- [saghen/blink.cmp](https://github.com/Saghen/blink.cmp) — LSP-powered autocompletion (replaces `cmp-nvim-lsp`; LSP capabilities sourced from `blink.cmp`)
 
 #### Trouble.nvim
 
