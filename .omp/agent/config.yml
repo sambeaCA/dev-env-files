@@ -1,0 +1,11 @@
+lastChangelogVersion: 15.6.0
+theme:
+  dark: tokyo-night
+  light: tokyo-night
+modelRoles:
+  smol: deepseek/deepseek-v4-flash:medium
+  slow: deepseek/deepseek-v4-pro:high
+  plan: cloudflare-ai-gateway/workers-ai/@cf/moonshotai/kimi-k2.6:high
+  commit: deepseek/deepseek-v4-flash:medium
+  default: deepseek/deepseek-v4-flash:high
+  designer: cloudflare-ai-gateway/openai/gpt-5.5:high

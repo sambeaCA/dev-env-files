@@ -10,6 +10,7 @@ return {
     { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
     { "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin buffer" },
     { "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Close non-pinned" },
+    { "<leader>bc", "<cmd>BufferLineCloseOthers<cr>", desc = "Close all other buffers" },
   },
   opts = {
     options = {

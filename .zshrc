@@ -20,7 +20,7 @@ export BAT_THEME=tokyonight_night
 # =============================================================================
 # Oh My Zsh
 # =============================================================================
-ZSH_THEME="sambea"
+ZSH_THEME="half-life"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

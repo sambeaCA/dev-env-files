@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
     # You can modify these with your information
-	name = Sambea
+name = Sambea
 	email = carlo@sambea.ca
 [core]
     pager = delta

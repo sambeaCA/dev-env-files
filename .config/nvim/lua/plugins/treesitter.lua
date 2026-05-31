@@ -1,44 +1,12 @@
 return {
-  "romus204/tree-sitter-manager.nvim",
+  "nvim-treesitter/nvim-treesitter",
+  branch = "main",
   event = { "BufReadPre", "BufNewFile" },
+  build = ":TSUpdate",
   config = function()
-    require("tree-sitter-manager").setup({
-      ensure_installed = {
-        "json",
-        "jsonc",
-        "javascript",
-        "typescript",
-        "tsx",
-        "yaml",
-        "toml",
-        "html",
-        "css",
-        "markdown",
-        "markdown_inline",
-        "latex",
-        "svelte",
-        "graphql",
-        "bash",
-        "lua",
-        "vim",
-        "vimdoc",
-        "dockerfile",
-        "gitignore",
-        "query",
-        "regex",
-        "comment",
-        "c",
-        "rust",
-        "go",
-        "gomod",
-        "gowork",
-        "gosum",
-        "python",
-        "terraform",
-        "hcl",
-      },
-      highlight = true,
-      auto_install = true,
-    })
+    -- The main branch has a minimal setup — Neovim 0.12+ handles
+    -- highlighting natively. This plugin provides parser management
+    -- (install/update) and query files.
+    require("nvim-treesitter").setup()
   end,
 }

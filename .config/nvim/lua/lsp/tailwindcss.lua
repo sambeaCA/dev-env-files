@@ -1,8 +1,17 @@
 return {
   filetypes = {
-    "html", "css", "scss", "sass", "postcss",
-    "javascript", "javascriptreact", "typescript", "typescriptreact",
-    "svelte", "vue", "astro",
+    "html",
+    "css",
+    "scss",
+    "sass",
+    "postcss",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "svelte",
+    "vue",
+    "astro",
   },
   root_markers = {
     "tailwind.config.js",
@@ -19,6 +28,9 @@ return {
     tailwindCSS = {
       validate = true,
       classFunctions = { "cva", "cn", "clsx", "tw" },
+      experimental = {
+        configFile = "packages/ui/src/styles/globals.css",
+      },
     },
   },
 }
