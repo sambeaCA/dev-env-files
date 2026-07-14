@@ -1,15 +1,16 @@
 return {
-  "williamboman/mason.nvim",
+  -- 1. Corrected the GitHub repository names to williamboman
+  "mason-org/mason.nvim",
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "neovim/nvim-lspconfig", -- 2. Added missing lspconfig dependency
   },
   config = function()
-    -- import mason
     local mason = require("mason")
-    -- import mason-lspconfig
     local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
+    local lspconfig = require("lspconfig") -- Cached for efficiency
 
     local servers = {
       "ts_ls",
@@ -29,7 +30,7 @@ return {
       "gopls",
       "marksman",
     }
-    -- enable mason and configure icons
+
     mason.setup({
       ui = {
         icons = {
@@ -43,36 +44,30 @@ return {
     mason_lspconfig.setup({
       ensure_installed = servers,
       handlers = {
-        -- The first entry (default handler)
-        --
         function(server_name)
-          -- 1. Try to load a custom config from .config/nvim/lua/lsp/server_name.lua
+          -- Safe require for custom settings in lua/lsp/<server_name>.lua
           local status, custom_config = pcall(require, "lsp." .. server_name)
 
-          if status then
-            -- If the file exists, use the settings from that file
-            require("lspconfig")[server_name].setup(custom_config)
-          else
-            -- If no custom file exists, just do a default setup
-            require("lspconfig")[server_name].setup({})
+          -- Make sure custom_config is a table, default to empty table if not
+          if not status or type(custom_config) ~= "table" then
+            custom_config = {}
           end
-        end,
 
-        -- You can still add specific overrides here if needed:
-        -- ["lua_ls"] = function() ... end,
+          lspconfig[server_name].setup(custom_config)
+        end,
       },
     })
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "biome", -- biome linter/formatter
-        "stylua", -- lua formatter
-        "isort", -- python import sorter
-        "black", -- python formatter
-        "pylint", -- python linter
-        "tflint", -- Terraform linter
-        "gofumpt", -- stricter go formatter
-        "goimports", -- go import organizer
+        "biome",
+        "stylua",
+        "isort",
+        "black",
+        "pylint",
+        "tflint",
+        "gofumpt",
+        "goimports",
       },
     })
   end,

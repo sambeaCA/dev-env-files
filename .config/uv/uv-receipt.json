@@ -1,12 +1,18 @@
 {
-	"binaries": ["uv", "uvx"],
+	"binaries": [
+		"uv",
+		"uvx"
+	],
 	"binary_aliases": {},
 	"cdylibs": [],
 	"cstaticlibs": [],
 	"install_layout": "flat",
 	"install_prefix": "~/.local/bin",
 	"modify_path": true,
-	"provider": { "source": "cargo-dist", "version": "0.30.2" },
+	"provider": {
+		"source": "cargo-dist",
+		"version": "0.30.2"
+	},
 	"source": {
 		"app_name": "uv",
 		"name": "uv",

@@ -1,0 +1,13 @@
+providers:
+  cloudflare-workers-ai:
+    baseUrl: "https://api.cloudflare.com/client/v4/accounts/2aaeb4c112fd11e9587d4fcc3d7335da/ai/v1"
+    apiKey: CLOUDFLARE_API_TOKEN
+    authHeader: true
+    api: openai-completions
+    disableStrictTools: true
+    models:
+      - id: "@cf/zai-org/glm-5.2"
+        name: GLM 5.2 (Cloudflare Workers AI)
+        reasoning: true
+        contextWindow: 262144
+        # maxTokens: 8192

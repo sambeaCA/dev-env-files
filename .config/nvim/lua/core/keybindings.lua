@@ -44,20 +44,16 @@ api.nvim_set_keymap("n", "<S-CR>", "o", { noremap = true, silent = true })
 api.nvim_set_keymap("i", "<S-CR>", "<Esc>o", { noremap = true, silent = true })
 
 -- Navigate to next buffer
-api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
-api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+-- api.nvim_set_keymap("n", "<C-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+-- api.nvim_set_keymap("n", "<C-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 
 -- Jump to buffer by ordinal position (VSCode Ctrl+1–9)
 for i = 1, 9 do
   keymap.set("n", "<leader>" .. i, "<cmd>BufferLineGoToBuffer " .. i .. "<CR>", { desc = "Go to buffer " .. i })
 end
 
--- VSCode-compatible keybindings
--- Window/pane navigation (mirrors VSCode pane focus keys)
-keymap.set("n", "<C-h>", "<C-w>h", { desc = "Focus left pane" })
-keymap.set("n", "<C-j>", "<C-w>j", { desc = "Focus pane below" })
-keymap.set("n", "<C-k>", "<C-w>k", { desc = "Focus pane above" })
-keymap.set("n", "<C-l>", "<C-w>l", { desc = "Focus right pane" })
+-- Home/end of line (Shift+arrow)
+keymap.set("n", "9", "$", { desc = "Go to end of line" })
 
 -- Move lines (mirrors Alt+j/k in VSCode)
 keymap.set("n", "<leader>mj", ":m .+1<CR>==", { desc = "Move line down", silent = true })

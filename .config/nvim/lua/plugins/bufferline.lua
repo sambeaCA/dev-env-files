@@ -4,13 +4,13 @@ return {
   version = "*",
   event = "VeryLazy",
   keys = {
-    { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-    { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-    { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-    { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-    { "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin buffer" },
+    { "<S-h>",      "<cmd>BufferLineCyclePrev<cr>",            desc = "Prev buffer" },
+    { "<S-l>",      "<cmd>BufferLineCycleNext<cr>",            desc = "Next buffer" },
+    { "[b",         "<cmd>BufferLineCyclePrev<cr>",            desc = "Prev buffer" },
+    { "]b",         "<cmd>BufferLineCycleNext<cr>",            desc = "Next buffer" },
+    { "<leader>bp", "<cmd>BufferLineTogglePin<cr>",            desc = "Pin buffer" },
     { "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Close non-pinned" },
-    { "<leader>bc", "<cmd>BufferLineCloseOthers<cr>", desc = "Close all other buffers" },
+    { "<leader>bc", "<cmd>BufferLineCloseOthers<cr>",          desc = "Close all other buffers" },
   },
   opts = {
     options = {
@@ -20,8 +20,12 @@ return {
       diagnostics_indicator = function(_, _, diag)
         local icons = { error = " ", warn = " " }
         local s = ""
-        if diag.error then s = s .. icons.error .. diag.error .. " " end
-        if diag.warning then s = s .. icons.warn .. diag.warning end
+        if diag.error then
+          s = s .. icons.error .. diag.error .. " "
+        end
+        if diag.warning then
+          s = s .. icons.warn .. diag.warning
+        end
         return s
       end,
       auto_toggle_bufferline = true,
