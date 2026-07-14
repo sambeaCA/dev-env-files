@@ -8,5 +8,9 @@ node_modules
 .omp/agent/models.db*
 .omp/agent/sessions/
 .omp/agent/terminal-sessions/
+.omp/agent/blobs/
 .omp/logs/
+.omp/cache/
+.omp/gpu_cache.json
 .omp/puppeteer/
+.omp/agent/mcp.json
