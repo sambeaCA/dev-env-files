@@ -1,23 +1,30 @@
 #!/bin/bash
 
-SPACE_SIDS=(1 2 3 4 5 6 7 8 9 10)
+for sid in $(aerospace list-workspaces --all); do
+  # Resolve app name for icon mapping and display label
+  case "$sid" in
+    "B") app="Safari";        label="$sid: Web"      ;;
+    "M") app="Music";         label="$sid: Music"    ;;
+    "N") app="Obsidian";      label="$sid: Obsidian" ;;
+    "O") app="OBS";           label="$sid: OBS"      ;;
+    "S") app="Messages";      label="$sid: Social"   ;;
+    "T") app="iTerm2";          label="$sid: Code"     ;;
+    "V") app="Final Cut Pro"; label="$sid: Editing"  ;;
+    *)   app="";              label="$sid"            ;;
+  esac
 
-for sid in "${SPACE_SIDS[@]}"
-do
-  sketchybar --add space space.$sid left                                 \
-             --set space.$sid space=$sid                                 \
-                              icon=$sid                                  \
-                              label.font="sketchybar-app-font:Regular:16.0" \
-                              label.padding_right=20                     \
-                              label.y_offset=-1                          \
-                              script="$PLUGIN_DIR/space.sh"
+  sketchybar --add item space.$sid left \
+      --subscribe space.$sid aerospace_workspace_change \
+      --set space.$sid \
+      label.color=$ACCENT_COLOR \
+      background.color=$BAR_COLOR \
+      background.corner_radius=5 \
+      background.height=20 \
+      background.drawing=off \
+      icon.font="sketchybar-app-font:Regular:16.0" \
+      icon.drawing="$([ -n "$app" ] && echo on || echo off)" \
+      icon="$([ -n "$app" ] && "$PLUGIN_DIR/icon_map_fn.sh" "$app")" \
+      label="$label" \
+      click_script="aerospace workspace $sid" \
+      script="$PLUGIN_DIR/aerospace.sh $sid"
 done
-
-sketchybar --add item space_separator left                             \
-           --set space_separator icon="􀆊"                                \
-                                 icon.color=$ACCENT_COLOR \
-                                 icon.padding_left=4                   \
-                                 label.drawing=off                     \
-                                 background.drawing=off                \
-                                 script="$PLUGIN_DIR/space_windows.sh" \
-           --subscribe space_separator space_windows_change
