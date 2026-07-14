@@ -8,8 +8,7 @@ Cool-looking terminal (Ghostty), keyboard-based window management with sessions.
 All tools used within this setup.
 
 | Tool | Description |
-|ll --git --icons --color=always /Users/sambea/.config/tmux
-------|-------------|
+|------|-------------|
 | [Neovim](https://neovim.io/) | Text editor with LSP, Treesitter, and AI integration |
 | [Ghostty](https://ghostty.org/) | GPU-accelerated terminal emulator |
 | [Tmux](https://github.com/tmux/tmux) | Terminal multiplexer with session persistence |
